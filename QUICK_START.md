@@ -23,7 +23,23 @@ Everything has been prepared for GitHub Pages deployment. Follow these simple st
 
 ### **STEP 2: Push Your Code** (1 minute)
 
-Copy and paste these commands into your terminal:
+Choose either **SSH** (recommended) or **HTTPS**:
+
+#### **Option A: SSH (Recommended - No passwords needed!)**
+
+```bash
+cd /Users/deepurajagopal/Desktop/Deepzz/DeepuWebPage/deepu-website
+
+git remote add origin git@github.com:officialdeepurajagopal/DeepuWebPage.git
+
+git push -u origin main
+```
+
+**First time using SSH?** 
+- See `SSH_SETUP_GUIDE.md` for complete setup instructions
+- Quick setup: Generate key → Add to GitHub → Push! (5 minutes)
+
+#### **Option B: HTTPS (Requires token)**
 
 ```bash
 cd /Users/deepurajagopal/Desktop/Deepzz/DeepuWebPage/deepu-website
@@ -97,6 +113,7 @@ Changes will be live in 1-2 minutes! 🚀
 ✅ **article1.html** - Sample article  
 ✅ **style.css** - Modern, responsive styling  
 ✅ **README.md** - Project documentation  
+✅ **SSH_SETUP_GUIDE.md** - SSH authentication setup (recommended!)  
 ✅ **DEPLOYMENT_GUIDE.md** - Detailed instructions  
 ✅ **deploy.sh** - Deployment helper script  
 
