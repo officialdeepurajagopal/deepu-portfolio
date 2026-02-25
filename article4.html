@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When 90% Test Coverage Isn't Enough - Deepu Rajagopal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="nav-container">
+            <h1><a href="index.html">Deepu Rajagopal</a></h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="articles.html" class="active">Articles</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <div class="container">
+        <a href="articles.html" class="back-link">Back to Articles</a>
+
+        <div class="article-header">
+            <h1 class="article-title">🚨 When 90% Test Coverage Isn't Enough: A Lesson in Real Integration</h1>
+            <div class="card-meta" style="justify-content: center;">
+                <span>📅 February 25, 2026</span>
+                <span>• 5 min read</span>
+            </div>
+        </div>
+
+        <div class="article-content">
+
+            <h2>🔧 The Setup</h2>
+            <p>Teams have a strong quality engineering culture:</p>
+            <ul>
+                <li>✅ Acceptance tests with several dependent services mocked</li>
+                <li>✅ Mocks aligned with the latest OpenAPI specs</li>
+                <li>✅ ~90% automation coverage</li>
+                <li>✅ Stable and reliable test suites</li>
+                <li>✅ Countless successful releases</li>
+            </ul>
+            <p>Which leads to:</p>
+            <ul>
+                <li>🟢 Green builds</li>
+                <li>⚡ Faster pipelines</li>
+                <li>💪 High confidence</li>
+            </ul>
+            <p>Application deployed to a higher environment. And that's when things broke.</p>
+
+            <h2>⚠️ The Surprise</h2>
+            <p>
+                Once deployed to a higher environment, the team encountered integration failures.
+                The issue appeared only when the real services started communicating with each other.
+            </p>
+            <p>The root cause? A subtle change in <strong>RestTemplate behaviour</strong> introduced during an upgrade.</p>
+            <p>What made it tricky:</p>
+            <ul>
+                <li>Mocks were correct</li>
+                <li>OpenAPI contracts were up to date</li>
+                <li>Test coverage was strong</li>
+            </ul>
+            <p>And yet, reality behaved differently.</p>
+
+            <h2>📚 What to Learn Here</h2>
+            <p>This wasn't a failure of automation. It was a reminder:</p>
+            <ul>
+                <li><strong>Mocked integrations</strong> validate contracts</li>
+                <li><strong>Real integrations</strong> validate behaviour</li>
+            </ul>
+            <p>Even perfectly aligned mocks cannot fully simulate:</p>
+            <ul>
+                <li>Framework-level changes</li>
+                <li>Serialization/deserialization nuances</li>
+                <li>Header propagation differences</li>
+                <li>Timeout and retry behaviour</li>
+                <li>Hidden configuration shifts</li>
+            </ul>
+            <p>
+                In this case, the tech upgrade introduced a change that did not violate the API contract —
+                but it altered runtime behaviour in a way mocks could not detect.
+            </p>
+
+            <h2>🧠 The QA Mindset Shift</h2>
+            <p>This experience reinforces something critical:</p>
+            <blockquote style="border-left: 4px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; font-style: italic; color: var(--text-muted);">
+                Quality is not only about coverage. It's about risk awareness.
+            </blockquote>
+            <p>From a QA perspective, certain changes should automatically trigger additional thinking:</p>
+            <ul>
+                <li>Framework upgrades</li>
+                <li>HTTP client changes</li>
+                <li>Serialization library changes</li>
+                <li>Security configuration updates</li>
+                <li>Infrastructure-level adjustments</li>
+            </ul>
+            <p>These are not "just technical refactors." They are:</p>
+            <ul>
+                <li>⚠️ Integration risk multipliers</li>
+            </ul>
+            <p>And they deserve:</p>
+            <ul>
+                <li>Real environment validation <strong>before</strong> production</li>
+            </ul>
+
+            <h2>🧩 The Missing Layer</h2>
+            <p>What most teams usually have:</p>
+            <ul>
+                <li>Strong acceptance tests</li>
+                <li>Excellent contract validation</li>
+                <li>High automation confidence</li>
+            </ul>
+            <p>What is often missing:</p>
+            <ul>
+                <li>Early real-service integration verification</li>
+            </ul>
+            <p>Not <em>instead of</em> mocks. But <em>in addition to</em> them.</p>
+            <p>Because:</p>
+            <ul>
+                <li>Mocks are <strong>fast</strong></li>
+                <li>Real integrations are <strong>truthful</strong></li>
+                <li>Both matter</li>
+            </ul>
+
+            <h2>🎯 The Takeaway</h2>
+            <ul>
+                <li>Automation gives <strong>confidence</strong></li>
+                <li>Integration gives <strong>assurance</strong></li>
+                <li>Green builds do not always mean production readiness</li>
+            </ul>
+            <p>Especially after:</p>
+            <ul>
+                <li>Foundational changes</li>
+                <li>Framework upgrades</li>
+                <li>Core dependency updates</li>
+            </ul>
+            <p>As QA engineers (and as teams), we must ask:</p>
+            <blockquote style="border-left: 4px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; font-style: italic; color: var(--text-muted);">
+                "What risks does this change introduce beyond the contract?"
+            </blockquote>
+            <p>Sometimes, the most valuable test is simply this:</p>
+            <blockquote style="border-left: 4px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; font-style: italic; color: var(--text-muted);">
+                Let the real services talk — before the customers do.
+            </blockquote>
+
+            <p style="margin-top:2rem; color: var(--text-muted);">
+                <strong>Tags:</strong> #QualityEngineering #SoftwareTesting #QA #SoftwareQuality #RiskBasedTesting #IntegrationTesting
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Deepu Rajagopal. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
