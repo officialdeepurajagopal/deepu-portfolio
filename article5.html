@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Jira to Tests in Seconds: GitHub Copilot + MCP - Deepu Rajagopal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="nav-container">
+            <h1><a href="index.html">Deepu Rajagopal</a></h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="articles.html" class="active">Articles</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <div class="container">
+        <a href="articles.html" class="back-link">Back to Articles</a>
+
+        <div class="article-header">
+            <h1 class="article-title">🚀 From Jira to Tests in Seconds: Automating Playwright Test Generation with GitHub Copilot & MCP</h1>
+            <div class="card-meta" style="justify-content: center;">
+                <span>📅 April 1, 2026</span>
+                <span>• 5 min read</span>
+            </div>
+        </div>
+
+        <div class="article-content">
+
+            <p>
+                One of the biggest pain points in test automation has always been the gap between requirements and implementation.
+                A Jira ticket describes what needs to be validated. A test file contains what was actually automated.
+                In between, there's a translation step — manual, error-prone, and often inconsistent.
+            </p>
+            <p>
+                I recently built a workflow that closes this gap using <strong>GitHub Copilot in VS Code</strong>, the
+                <strong>Atlassian MCP server</strong>, and the <strong>Playwright MCP server</strong>. The result:
+                Playwright tests generated <em>directly from Jira requirements</em> — with no copy-pasting, no interpretation drift,
+                and a dramatically faster feedback loop.
+            </p>
+
+            <h2>🔧 What I Built</h2>
+
+            <h3>1. Setting Up the Playwright MCP Server</h3>
+            <p>
+                The first step was connecting Copilot to a live browser context via the
+                <strong>Playwright MCP server</strong>. This gives Copilot the ability to reason about
+                web interactions — page navigation, form inputs, assertions — and translate them directly into
+                executable Playwright test code.
+            </p>
+
+            <h3>2. Integrating the Atlassian MCP Server</h3>
+            <p>
+                Next, I wired up the <strong>Atlassian MCP server</strong> to bring Jira context directly into VS Code.
+                With this integration, Copilot can read ticket details — including the description, acceptance criteria,
+                and validation rules — without me ever leaving the editor. The ticket becomes the source of truth for
+                what tests need to cover.
+            </p>
+
+            <h3>3. Creating the Jira Task</h3>
+            <p>
+                I created a Jira task for the <strong>invalid login / invalid credentials flow</strong>. The ticket included:
+            </p>
+            <ul>
+                <li>Clear requirements describing the expected behaviour</li>
+                <li>Acceptance criteria specifying what must hold true after a failed login attempt</li>
+                <li>Specific validations — error message displayed, user remains logged out</li>
+            </ul>
+            <p>
+                Writing a well-structured ticket turned out to be a key part of the workflow.
+                The richer the acceptance criteria, the more precise the generated tests.
+            </p>
+
+            <h3>4. Prompting Copilot to Generate Tests</h3>
+            <p>
+                With both MCP servers active, I prompted Copilot to:
+            </p>
+            <ul>
+                <li>Read and parse the Jira ticket</li>
+                <li>Extract the validations from the acceptance criteria</li>
+                <li>Generate Playwright test cases covering each scenario</li>
+            </ul>
+            <p>
+                Copilot processed the ticket content and produced a structured test file — complete with
+                page interactions, assertions, and descriptive test names that mapped directly back to the
+                Jira acceptance criteria.
+            </p>
+
+            <h3>5. Executing and Verifying the Tests</h3>
+            <p>
+                The generated tests were executed against the application. Both validations passed:
+            </p>
+            <ul>
+                <li>✅ Error message displayed for invalid credentials</li>
+                <li>✅ User remains logged out after a failed attempt</li>
+            </ul>
+            <p>No manual edits were needed. The tests ran correctly on the first pass.</p>
+
+            <h2>✨ Outcomes</h2>
+
+            <ul>
+                <li>
+                    <strong>⏱️ Faster test creation</strong> — going from a Jira ticket to a passing Playwright test
+                    took a fraction of the time it would manually.
+                </li>
+                <li>
+                    <strong>✅ More consistent validations</strong> — because the tests are derived directly from
+                    acceptance criteria, there's no risk of a human misreading or skipping a condition.
+                </li>
+                <li>
+                    <strong>🔗 Tighter requirements-to-coverage alignment</strong> — every acceptance criterion in
+                    the Jira ticket has a corresponding test assertion. Traceability becomes almost automatic.
+                </li>
+            </ul>
+
+            <h2>🧠 Why This Matters</h2>
+            <p>
+                This isn't just a productivity trick. It represents a shift in how automation is created.
+            </p>
+            <blockquote style="border-left: 4px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; font-style: italic; color: var(--text-muted);">
+                When AI can read requirements and write tests, the bottleneck moves from implementation to definition.
+                Good requirements now directly produce good automation.
+            </blockquote>
+            <p>
+                This also encourages QA engineers and developers to invest more in writing clear, structured
+                acceptance criteria — because the quality of the output is directly tied to the quality of the input.
+            </p>
+
+            <h2>🔮 What's Next</h2>
+            <p>This workflow is a foundation. A few areas I'm actively exploring:</p>
+            <ul>
+                <li><strong>Broader coverage:</strong> Applying the same approach to complex, multi-step flows beyond login</li>
+                <li><strong>CI/CD integration:</strong> Triggering test generation automatically when a Jira task moves to a certain status</li>
+                <li><strong>Test maintenance:</strong> Using Copilot to update existing tests when acceptance criteria change in Jira</li>
+                <li><strong>API test generation:</strong> Extending beyond UI tests to generate Playwright API test cases from ticket specs</li>
+            </ul>
+
+            <h2>🔧 Key Technologies Used</h2>
+            <ul>
+                <li>GitHub Copilot (VS Code)</li>
+                <li>Model Context Protocol (MCP)</li>
+                <li>Playwright MCP Server</li>
+                <li>Atlassian MCP Server</li>
+                <li>Jira (Requirements &amp; Acceptance Criteria)</li>
+                <li>Playwright (Test Automation Framework)</li>
+            </ul>
+
+            <p style="margin-top:2rem; color: var(--text-muted);">
+                <strong>Tags:</strong> #Playwright #GitHubCopilot #VSCode #Jira #TestAutomation #QA #AutomationTesting #MCP
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Deepu Rajagopal. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
